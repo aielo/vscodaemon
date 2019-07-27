@@ -20,11 +20,12 @@ The variables below can specified on install and/or at runtime:
 | Variable   | Description                      | Default                | On Install | At Runtime |
 | :---:      | :---                             | :---:                  | :---:      | :---:      |
 | `USER`     | OS user account                  | coder                  | YES        | NO         |
+| `VERSION`  | `code-server` version            | 1.1156-vsc1.33.1       | YES        | NO         |
 | `PASSWORD` | Password for VS Code web access  | temporary              | YES        | YES        |
 | `PORT`     | HTTP port for VS Code web access | 3001                   | YES        | YES        |
 | `WORKDIR`  | Starting (working) directory     | /home/`USER`/workspace | YES        | YES        |
 
-<sub>**Note:** other `code-server` parameters are not currently supported.</sub>
+<sub>**Note:** other `code-server` parameters are not currently supported. Latest `code-server` version can be found [here](https://github.com/cdr/code-server/releases/latest).</sub>
 
 ### On Install (Ubuntu example)
 1. Download the proper `setup-*.sh` script to your distro
