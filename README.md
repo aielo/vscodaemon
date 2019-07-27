@@ -54,7 +54,7 @@ mkdir /home/myuser/.code-server
 ```
 4. Create the `.code-server/env` file
 ```sh
-touch /home/USER/.code-server/env
+touch /home/myuser/.code-server/env
 ```
 5. Edit the `.code-server/env` file and add variables as needed
 ```sh
