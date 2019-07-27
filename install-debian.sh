@@ -12,19 +12,19 @@ rm temp.tgz
 adduser --disabled-password --gecos "" $USER
 usermod -aG sudo $USER
 su -c "touch /home/$USER/.sudo_as_admin_successful" $USER
-echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/code-server
-echo "USER=$USER\n" > /opt/code-server/env
+printf "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/code-server
+printf "USER=$USER\n" > /opt/code-server/env
 if [ ! -z $PASSWORD ]; then
-  echo "PASSWORD=$PASSWORD\n" >> /opt/code-server/env
+  printf "PASSWORD=$PASSWORD\n" >> /opt/code-server/env
 fi
 if [ ! -z $PORT ]; then
-  echo "PORT=$PORT\n" >> /opt/code-server/env
+  printf "PORT=$PORT\n" >> /opt/code-server/env
 fi
 if [ ! -z $WORKDIR ]; then
   if [ ! -d $WORKDIR ]; then
     su -c "mkdir -p $WORKDIR" $USER
   fi
-  echo "WORKDIR=$WORKDIR\n" >> /opt/code-server/env
+  printf "WORKDIR=$WORKDIR\n" >> /opt/code-server/env
 fi
 
 # Service setup and startup
