@@ -7,62 +7,28 @@ This enables `code-server` to:
 - Be configured (e.g. application user, port) on installation
 - Be re-configured (e.g. port, work directory) any time
 
-## Install on Ubuntu/Debian
+## Quick install
 ```sh
-wget -qO- https://raw.githubusercontent.com/aielo/vscodaemon/master/install-debian.sh | bash
+wget -qO- https://raw.githubusercontent.com/aielo/vscodaemon/master/vscodaemon.sh | bash -s install
 ```
-<sub>**Note:** this installs `vscodaemon` with default settings, i.e., `code-server` port and password remain unchanged. Remember to either set/change variables in the script prior running or setup new values right after the installation.</sub>
+<sub>**Note:** this installs `vscodaemon` with default settings, i.e., `code-server` port and password remain unchanged. Remember to either use [options](#Usage) on install or set up `.code-server` file later.</sub>
 
-## Custom (environment) variables
+## Usage
+```sh
+./vscodaemon.sh (install|uninstall) [OPTIONS]
+```
+## Installation options
 
-The variables below can specified on install and/or at runtime:
+The following parameters can be used during installation:
 
-| Variable   | Description                      | Default                | On Install | At Runtime |
-| :---:      | :---                             | :---:                  | :---:      | :---:      |
-| `USER`     | OS user account                  | coder                  | YES        | NO         |
-| `VERSION`  | `code-server` version            | 1.1156-vsc1.33.1       | YES        | NO         |
-| `PASSWORD` | Password for VS Code web access  | temporary              | YES        | YES        |
-| `PORT`     | HTTP port for VS Code web access | 3001                   | YES        | YES        |
-| `WORKDIR`  | Starting (working) directory     | /home/`USER`/workspace | YES        | YES        |
-
-<sub>**Note:** other `code-server` parameters are not currently supported. Latest `code-server` version can be found [here](https://github.com/cdr/code-server/releases/latest).</sub>
-
-### On Install (Ubuntu example)
-1. Download the proper `setup-*.sh` script to your distro
-```sh
-wget https://raw.githubusercontent.com/aielo/vscodaemon/master/install-debian.sh
-```
-2. Add/set the variables in the beginning of the script
-```sh
-#!/bin/sh
-VERSION=1.1156-vsc1.33.1
-USER=myuser
-PORT=8000
-WORKDIR=/var/www/myproject
-[...]
-```
-3. Run it
-```sh
-bash install-debian.sh
-```
-
-### At Runtime (Ubuntu example)
-1. Log into VS Code using default port and password
-2. Open a terminal by pressing `` CTRL + SHIFT + ` ``
-3. Create the `/home/USER/.code-server/` directory
-```sh
-mkdir /home/myuser/.code-server
-```
-4. Create the `.code-server/env` file
-```sh
-touch /home/myuser/.code-server/env
-```
-5. Edit the `.code-server/env` file and add variables as needed
-```sh
-PORT=9001
-PASSWORD=newpasswd
-```
-6. Restart the `code-server` service
-```sh
-sudo service code-server restart
-```
+| Option           | Description                      | Default           |
+| :---             | :---                             | :---:             |
+| -g|--group       | OS `USER` group                  | `USER` |
+| -i|--install-dir | `code-server` version            | /opt/code-server  |
+| -p|--password    | Password for VS Code web access  | `USER`            |
+| -P|--port        | HTTP port for VS Code web access | 8443              |
+| -s|--grant-sudo  | `sudo` permissions to user       | No                |
+| -u|--user        | OS `USER`                        | coder             |
+| -v|--version     | `code-server` version            | [Lastest version](https://github.com/cdr/code-server/releases/latest) |
+| -w|--work-dir    | Working (start) directory        | `USER`'s home     |
+<sub>**Note:** other `code-server` parameters are not currently supported.</sub>
