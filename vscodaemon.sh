@@ -78,11 +78,11 @@ uninstall() {
 # Command (install|uninstall)
 case "$1" in
   install)
-    install
+    CMD=install
     shift
     ;;
   uninstall)
-    uninstall
+    CMD=uninstall
     shift
     ;;
   *)
@@ -131,3 +131,5 @@ while [ $# -gt 0 ]; do
       ;;
   esac
 done
+
+$CMD
