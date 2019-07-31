@@ -50,7 +50,7 @@ install() {
     echo CODESERVER=$HOME >> /etc/environment
   fi
 
-  $($CMD /etc/init.d/code-server https://raw.githubusercontent.com/aielo/vscodaemon/refactor/unique-installer/daemon/code-server)
+  $($CMD /etc/init.d/code-server https://raw.githubusercontent.com/aielo/vscodaemon/master/daemon/code-server)
   chmod +x /etc/init.d/code-server
   update-rc.d code-server defaults
 
