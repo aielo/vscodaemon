@@ -11,12 +11,13 @@ This enables `code-server` to:
 ```sh
 wget -qO- https://raw.githubusercontent.com/aielo/vscodaemon/master/vscodaemon.sh | bash -s install
 ```
-<sub>**Note:** this installs `vscodaemon` with default settings, i.e., `code-server` port and password remain unchanged. Remember to either use [options](#Usage) on install or set up `.code-server` file later.</sub>
+<sub>**Note:** this installs `vscodaemon` with default settings, i.e., `code-server` port and password remain unchanged. Remember to either use the available [options](#Usage) or setup your `~/.code-server` file later.</sub>
 
 ## Usage
 ```sh
 ./vscodaemon.sh (install|uninstall) [OPTIONS]
 ```
+
 ## Installation options
 
 The following parameters can be used during installation:
@@ -31,4 +32,5 @@ The following parameters can be used during installation:
 | -u|--user        | OS `USER`                        | coder             |
 | -v|--version     | `code-server` version            | [Lastest version](https://github.com/cdr/code-server/releases/latest) |
 | -w|--work-dir    | Working (start) directory        | `USER`'s home     |
+
 <sub>**Note:** other `code-server` parameters are not currently supported.</sub>
