@@ -19,7 +19,7 @@ It can be used to either install or uninstall both `vscodaemon` and `code-server
 ./vscodaemon.sh (install|uninstall) [OPTIONS]
 ```
 
-## Install options
+### Install options
 
 The following parameters can be used during installation:
 
