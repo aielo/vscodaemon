@@ -1,0 +1,75 @@
+#!/usr/bin/env sh
+
+# Description:   code-server daemon
+# Documentation: https://github.com/aielo/vscodaemon/blob/master/README.md
+# Author:        Ricardo Aielo <ricardo.aielo@gmail.com>
+
+set -o noglob
+
+. /lib/lsb/init-functions
+
+. /etc/environment
+NAME="code-server"
+HOME=${CODESERVER:-/opt/code-server}
+BIN="$HOME/code-server"
+
+# Default variables (installation set)
+. "$HOME/env"
+
+# Custom variables (user set)
+ENV=$(getent passwd $USER | cut -d: -f6)/.code-server
+[ -f $ENV ] && . $ENV
+
+# Start
+start() {
+  PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
+  DIR=${WDIR:-$(getent passwd $USER | cut -d: -f6)}
+  export PASSWORD=${PASSWD:-$USER}
+  [ -z $PORT ] || ARGS="-p $PORT"
+  echo "Starting $NAME..."
+  ON=$(status|sed -e s/\*//g|grep -v 'not running')
+  [ -z "$ON" ] && start-stop-daemon --start --chuid "$USER:$GROUP" --background --make-pidfile --pidfile /var/run/$NAME.pid --chdir "$DIR" --exec "$BIN" -- $ARGS || true
+  echo "done"
+}
+
+# Stop
+stop() {
+  echo "Stopping $NAME..."
+  PID=$(cat /var/run/$NAME.pid 2>/dev/null)
+  if [ ! -z $PID ]; then
+    while [ -d /proc/$PID ]; do
+      $(pkill -15 -P $PID && kill -15 $PID)
+      sleep 0.5
+    done
+  fi
+  [ -f /var/run/$NAME.pid ] && rm /var/run/$NAME.pid
+  printf "done\n"
+}
+
+# Status
+status() {
+  status_of_proc -p /var/run/$NAME.pid $BIN $NAME && return 0 || return $?
+}
+
+case "$1" in
+  start)
+    start
+    ;;
+  stop)
+    stop
+    ;;
+  restart)
+    stop
+    start
+    ;;
+  status)
+    status
+    exit $?
+    ;;
+  *)
+    echo "Usage: $NAME {start|stop|restart|status}" >&2
+    exit 1
+    ;;
+esac
+
+exit 0
