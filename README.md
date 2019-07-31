@@ -13,7 +13,8 @@ wget -qO- https://raw.githubusercontent.com/aielo/vscodaemon/master/vscodaemon.s
 ```
 <sub>**Note:** this installs `vscodaemon` with default settings, i.e., `code-server` port and password remain unchanged. Remember to either use the available [options](#Usage) or setup your `~/.code-server` file later.</sub>
 
-## Usage
+## The \[un\]install script
+It can be used to either install or uninstall both `vscodaemon` and `code-server`.
 ```sh
 ./vscodaemon.sh (install|uninstall) [OPTIONS]
 ```
@@ -34,3 +35,9 @@ The following parameters can be used during installation:
 | -w                | --work-dir               | Working (start) directory        | `USER`'s home     |
 
 <sub>**Note:** other `code-server` parameters are not currently supported.</sub>
+
+## The daemon
+Daemon supports `start`, `stop`, `restart` and `status` operations.
+```sh
+service code-server restart
+```
