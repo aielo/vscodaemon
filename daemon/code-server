@@ -29,7 +29,7 @@ start() {
   echo "Starting $NAME..."
   ON=$(status|sed -e s/\*//g|grep -v 'not running')
   [ -z "$ON" ] && start-stop-daemon --start --chuid "$USER:$GROUP" --background --make-pidfile --pidfile /var/run/$NAME.pid --chdir "$DIR" --exec "$BIN" -- $ARGS || true
-  echo "done"
+  echo "done!"
 }
 
 # Stop
@@ -43,7 +43,7 @@ stop() {
     done
   fi
   [ -f /var/run/$NAME.pid ] && rm /var/run/$NAME.pid
-  printf "done\n"
+  echo "done!"
 }
 
 # Status
