@@ -23,8 +23,8 @@ ENV=$(getent passwd $USER | cut -d: -f6)/.code-server
 # Start
 start() {
   PATH="/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin"
-  DIR=${WDIR:-$(getent passwd $USER | cut -d: -f6)}
   export PASSWORD=${PASSWD:-$USER}
+  [ $WDIR ] && [ -r $WDIR ] && DIR=$WDIR || DIR=$(getent passwd $USER | cut -d: -f6)
   [ -z $PORT ] || ARGS="-p $PORT"
   echo "Starting $NAME..."
   ON=$(status|sed -e s/\*//g|grep -v 'not running')
