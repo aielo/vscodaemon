@@ -41,3 +41,31 @@ Daemon supports `start`, `stop`, `restart` and `status` operations.
 ```sh
 service code-server restart
 ```
+
+## Environment files and variables
+
+The install location is set to `/etc/environment` as `CODESERVER`.
+
+`vscodaemon` uses this and other two files to retrieve environment variables:
+
+| File                      | Created by     | Created at   |
+| :---                      | :---:          | :---:        |
+| `/etc/environment`        | OS             | Existing     |
+| `CODESERVER/env`          | Install script | Install      |
+| `/home/USER/.code-server` | User (manual)  | Post-install |
+
+Variables supported are listed below:
+
+| Name       | Description                      | Default      |
+| :---:      | :---                             | :---:        |
+| `GROUP`    | OS `USER` group                  | `USER`       |
+| `USER`     | OS `USER`                        | `USER`       |
+| `PASSWD`   | Password for VS Code web access  | `USER`       |
+| `PORT`     | HTTP port for VS Code web access | 8443         |
+| `WDIR`     | Starting (working) directory     | /home/`USER` |
+
+## Supported distros
+`vscodaemon` was successfully tested on:
+- Ubuntu 18.04 LTS (Bionic Beaver)
+- Ubuntu 16.04 LTS (Xenial Xerus)
+- Debian 9 (stretch)
