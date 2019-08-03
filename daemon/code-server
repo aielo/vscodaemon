@@ -1,8 +1,23 @@
 #!/usr/bin/env sh
 
-# Description:   code-server daemon
+# Description:   
 # Documentation: https://github.com/aielo/vscodaemon/blob/master/README.md
 # Author:        Ricardo Aielo <ricardo.aielo@gmail.com>
+
+# LSB info
+### BEGIN INIT INFO
+# Provides:          code-server
+# Required-Start:    $local_fs $network $syslog
+# Required-Stop:     $local_fs $network $syslog
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: code-server daemon
+# Description:       code-server daemon
+### END INIT INFO
+
+# chkconfig info
+# chkconfig: 2345 20 80
+# description: code-server daemon
 
 set -o noglob
 
