@@ -42,7 +42,7 @@ Daemon supports `start`, `stop`, `restart` and `status` operations.
 service code-server restart
 ```
 
-## Environment variables
+## Environment files and variables
 
 The install location is set to `/etc/environment` as `CODESERVER`.
 
