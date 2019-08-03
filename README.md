@@ -45,6 +45,7 @@ service code-server restart
 ## Environment variables
 
 The install location is set to `/etc/environment` as `CODESERVER`.
+
 `vscodaemon` uses this and other two files to retrieve environment variables:
 
 | File                      | Created by     | Created at   |
