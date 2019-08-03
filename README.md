@@ -41,3 +41,9 @@ Daemon supports `start`, `stop`, `restart` and `status` operations.
 ```sh
 service code-server restart
 ```
+
+## Supported distros
+`vscodaemon` was successfully tested on:
+- Ubuntu 18.04 LTS (Bionic Beaver)
+- Ubuntu 16.04 LTS (Xenial Xerus)
+- Debian 9 (stretch)
