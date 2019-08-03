@@ -48,7 +48,7 @@ The install location is set to `/etc/environment` as `CODESERVER`.
 `vscodaemon` uses this and other two files to retrieve environment variables:
 
 | File                      | Created by     | Created at   |
-| :---:                     | :---           | :---:        |
+| :---                      | :---:          | :---:        |
 | `/etc/environment`        | OS             | Existing     |
 | `CODESERVER/env`          | Install script | Install      |
 | `/home/USER/.code-server` | User (manual)  | Post-install |
